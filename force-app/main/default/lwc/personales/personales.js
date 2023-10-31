@@ -11,8 +11,8 @@ export default class Personales extends LightningElement {
     this.dispatchEvent(new CloseActionScreenEvent());
     this.dispatchEvent(
       new ShowToastEvent({
-        title: "Success",
-        message: "Record updated!",
+        title: "Correcto!",
+        message: "Se guardo correctamente!",
         variant: "success",
       }),
     );

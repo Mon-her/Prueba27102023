@@ -1,5 +1,5 @@
     <template>
-        <lightning-quick-action-panel header="Edit Fields Action">
+        <lightning-quick-action-panel header="Editar persona">
           <lightning-record-edit-form
             record-id={recordId}
             object-api-name={objectApiName}
@@ -7,9 +7,11 @@
             <lightning-input-field field-name="Name"></lightning-input-field>
             <lightning-input-field field-name="Apellido__c"></lightning-input-field>
             <lightning-input-field field-name="Celular__c"></lightning-input-field>
+          </lightning-record-edit-form>
+          <div slot="footer">
             <lightning-button variant="neutral" label="Cancel"></lightning-button>
             <lightning-button variant="brand" class="slds-m-left_x-small" label="Save" type="submit">
             </lightning-button>
-          </lightning-record-edit-form>
+          </div>
         </lightning-quick-action-panel>
       </template>
