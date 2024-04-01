@@ -1,20 +1,30 @@
-import { LightningElement, api } from "lwc";
-import { ShowToastEvent } from "lightning/platformShowToastEvent";
-import { CloseActionScreenEvent } from "lightning/actions";
+import { LightningElement, api, track, wire} from "lwc";
+//import { ShowToastEvent } from "lightning/platformShowToastEvent";
+//import { CloseActionScreenEvent } from "lightning/actions";
+//import NAME_FIELD from "@salesforce/schema/Personal__c.Name";
+import getbiblio from "@salesforce/apex/pdfprueba.getbiblio";
 
 export default class Personales extends LightningElement {
-  @api recordId;
-  @api objectApiName;
 
-  handleSuccess() {
-    // Close the modal window and display a success toast
-    this.dispatchEvent(new CloseActionScreenEvent());
-    this.dispatchEvent(
-      new ShowToastEvent({
-        title: "Correcto!",
-        message: "Se guardo correctamente!",
-        variant: "success",
-      }),
-    );
-  }
+    @track outputText;
+    @api recordId;
+    @api objectApiName;
+
+    searchText;
+    @wire(getbiblio, { searchText : "$searchText" })
+    prueba;
+    error;
+
+    // Evento change
+    handleInputChange(event) {
+      console.log(event);
+      //this.searchText = event.target.value;
+    }
+
+    // Evento click
+    handleclick(event) {
+      console.log(event);
+      const element = this.template.querySelector('[data-id="overview"]').value;
+      this.searchText = element;
+    }
 }
