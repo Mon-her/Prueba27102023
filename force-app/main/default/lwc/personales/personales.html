@@ -1,17 +1,25 @@
 <template>
   <lightning-quick-action-panel header="Editar persona">
+
+    <lightning-record-edit-form
+      record-id={recordId}
+      object-api-name={objectApiName}>
+
+      <lightning-input-field field-name="Cedula__c" type="text" label="Ingresa el nombre" data-id="overview"></lightning-input-field>
+
     <div class="slds-p-around_medium lgc-bg">
-     <lightning-input type="text" label="Ingresa el nombre" name="Nombre" data-id="overview"></lightning-input>
+     <lightning-input type="Number" label="Ingresa el nombre" name="Nombre" ></lightning-input>
     </div>
     <lightning-button class="slds-var-m-top_small slds-align_absolute-center" variant="brand" onclick={handleclick}
       name="update" label="Save">
     </lightning-button>
     <template if:true={prueba.data}>
       <template for:each={prueba.data} for:item="prue">
-        <li key={prue.Name}>
+        <li key={prue.Cedula__c}>
           <c-padre prueba2={prue}></c-padre>
         </li>
       </template>
     </template>
+  </lightning-record-edit-form>
   </lightning-quick-action-panel>
 </template>
