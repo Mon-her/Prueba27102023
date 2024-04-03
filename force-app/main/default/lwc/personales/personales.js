@@ -9,12 +9,12 @@ export default class Personales extends LightningElement {
     @track outputText;
     @api recordId;
     @api objectApiName;
-
+    
     searchText;
     @wire(getbiblio, { searchText : "$searchText" })
     prueba;
     error;
-
+    
     // Evento change
     handleInputChange(event) {
       console.log(event);
