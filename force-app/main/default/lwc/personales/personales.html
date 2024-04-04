@@ -5,15 +5,15 @@
       record-id={recordId}
       object-api-name={objectApiName}>
 
-      <lightning-input-field field-name="Personal__c" type="text" label="Ingresa el nombre" data-id="overview"></lightning-input-field>
+      <lightning-input-field field-name="Name" type="text" label="Ingresa el nombre" data-id="overview"></lightning-input-field>
+      <div>{outputText}</div>
       <template for:each={prueba.data} for:item="prue">
-        <div key={prue.Cedula__c}>
-          <lightning-input type="text" label="Ingresa el nombre" value={prue.Apellido__c} name="Apellido"></lightning-input>
-          
+        <div key={prue.Id}>
+          <lightning-input type="text" label="Nombre oportunidad" value={prue.Name} name="Oportunidad" data-id="N"></lightning-input>
+          <lightning-input type="text" label="Stage oportunidad" value={prue.StageName} name="Stage" data-id="O"></lightning-input>
         </div>
       </template>
-    
-    <lightning-button class="slds-var-m-top_small slds-align_absolute-center" variant="brand" onclick={handleclick}
+    <lightning-button class="slds-var-m-top_small slds-align_absolute-center" variant="brand" onclick={handleGeneratePDF}
       name="update" label="Save">
     </lightning-button>
   </lightning-record-edit-form>
