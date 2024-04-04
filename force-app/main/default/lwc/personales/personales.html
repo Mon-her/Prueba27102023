@@ -1,21 +1,33 @@
 <template>
   <lightning-quick-action-panel header="Editar persona">
 
-    <lightning-record-edit-form
-      record-id={recordId}
-      object-api-name={objectApiName}>
+    <lightning-record-edit-form record-id={recordId} object-api-name={objectApiName}>
 
-      <lightning-input-field field-name="Name" type="text" label="Ingresa el nombre" data-id="overview"></lightning-input-field>
-      <div>{outputText}</div>
+      <lightning-input-field field-name="Name" type="text" label="Ingresa el nombre"
+        data-id="overview"></lightning-input-field>
+      <lightning-input-field field-name="Rating" type="text" label="Ingresa el nombre"
+        data-id="overview1"></lightning-input-field>
+      <lightning-input-field field-name="ParentId" type="text" label="Ingresa el nombre"
+        data-id="overview2"></lightning-input-field>
+      <lightning-input-field field-name="Phone" type="text" label="Ingresa el nombre"
+        data-id="overview3"></lightning-input-field>
+      <lightning-input-field field-name="AccountNumber" type="text" label="Ingresa el nombre"
+        data-id="overview4"></lightning-input-field>
       <template for:each={prueba.data} for:item="prue">
         <div key={prue.Id}>
-          <lightning-input type="text" label="Nombre oportunidad" value={prue.Name} name="Oportunidad" data-id="N"></lightning-input>
-          <lightning-input type="text" label="Stage oportunidad" value={prue.StageName} name="Stage" data-id="O"></lightning-input>
+          <lightning-input type="text" label="Nombre oportunidad" value={prue.Name} name="Oportunidad"
+            data-id="N"></lightning-input>
+          <lightning-input type="text" label="Stage oportunidad" value={prue.StageName} name="Stage"
+            data-id="O"></lightning-input>
+          <lightning-input type="text" label="Descripción" value={prue.Description} name="Oportunidad"
+            data-id="S"></lightning-input>
+          <lightning-input type="text" label="Tipo oportunidad" value={prue.Type} name="Stage"
+            data-id="T"></lightning-input>
         </div>
       </template>
-    <lightning-button class="slds-var-m-top_small slds-align_absolute-center" variant="brand" onclick={handleGeneratePDF}
-      name="update" label="Save">
-    </lightning-button>
-  </lightning-record-edit-form>
+      <lightning-button class="slds-var-m-top_small slds-align_absolute-center" variant="brand"
+        onclick={handleGeneratePDF} name="update" label="Save">
+      </lightning-button>
+    </lightning-record-edit-form>
   </lightning-quick-action-panel>
 </template>

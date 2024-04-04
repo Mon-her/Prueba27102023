@@ -102,61 +102,74 @@ export default class Personales extends LightningElement {
     //doc.setFontSize(22);
     //doc.text('Datos del Usuario', 10, 10);
     // Definir los márgenes para mover la tabla en la dirección X
-    const margins = { top: 10, bottom: 10, left: 0 };
+    const margins = { top: 5, bottom: 5, left: 5 };
     // Configuración para centrar el texto en las celdas de la tabla
     const options = {
-      
+
       headStyles: { fillColor: [51, 122, 183], textColor: 253 },
-      bodyStyles: { textColor: [255, 0, 255] },
+      bodyStyles: { textColor: [255, 255, 255], fontSize: 25 },
       //Alinear texto al centro de manera horizontal
-      styles: {halign:'center'}
+      styles: { halign: 'center' },
+      columnStyles: {
+        0: { // Índice de la columna donde se aplicará el estilo (segunda columna)
+          fillColor: [41, 128, 186] // Cambiar el color de fondo de la segunda columna
+        }
+      }
+
     };
     // Configurar datos de la tabla Nombre
     const tableTitulo = [
-      ['Formato de credito'],
+      ['FORMATO DE CREDITO'],
     ];
     doc.autoTable({
-      startY: 10,
+      startY: 5,
       //startX: 100,
       //head: tableTitulo,
       body: tableTitulo,
       ...options,
       tableWidth: 200,
       margin: margins,
-      
     });
 
     // Configurar datos de la tabla Nombre
     const tableData = [
       ['Nombre de cuenta',
         'Nombre oportunidad',
-        'Stage oportunidad'
+        'Rating',
+        'Cuenta padre',
+        'Telefono',
+        'Numero cuenta',
       ],
       [formData.overview,
       formData.N,
-      formData.O
+      formData.overview1,
+      formData.overview2,
+      formData.overview3,
+      formData.overview4
       ],
       //['Dirección', direccion]
     ];
 
     // Configurar datos de la tabla Edad
     const tableData_n = [
-      ['Campo', 'Valor'],
+      ['Stage oportunidad', 'Tipo oportunidad', 'Descripción'],
       //['Nombre', formData.N],
-      ['Edad', formData.O],
+      [formData.O, formData.S, formData.T],
       //['Dirección', direccion]
     ];
 
     // Agregar tabla al PDF Nombre
     doc.autoTable({
-      startY: 130,
+      //startY: 130,
       head: tableData.slice(0, 1),
       body: tableData.slice(1),
-      columnStyles: {
-        0: { cellWidth: 20 }, // Ancho de la primera columna en puntos
-        1: { cellWidth: 'auto' }, // Ancho de la segunda columna ajustado automáticamente al contenido
-        2: { cellWidth: 'wrap' } // Ancho de la tercera columna con contenido que se envuelve
-      }
+      tableWidth: 200,
+      margin: margins
+      //columnStyles: {
+      //  0: { cellWidth: 20 }, // Ancho de la primera columna en puntos
+       // 1: { cellWidth: 'auto' }, // Ancho de la segunda columna ajustado automáticamente al contenido
+       // 2: { cellWidth: 'wrap' } // Ancho de la tercera columna con contenido que se envuelve
+      
       //columnStyles: {
       // 0: { fillColor: [255, 0, 0] }, // Estilo para la primera columna
       //  1: { fontStyle: 'italic' } // Estilo para la segunda columna
@@ -165,9 +178,11 @@ export default class Personales extends LightningElement {
 
     // Agregar tabla al PDF Edad
     doc.autoTable({
-      startY: 80,
+      //startY: 80,
       head: tableData_n.slice(0, 1),
       body: tableData_n.slice(1),
+      tableWidth: 200,
+      margin: margins,
       columnWidth: [30, 'auto', 'wrap']
 
       //columnStyles: {

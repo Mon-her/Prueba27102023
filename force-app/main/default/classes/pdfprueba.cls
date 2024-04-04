@@ -12,7 +12,7 @@
                // SELECT Name, Apellido__c, Celular__c FROM Personal__c WHERE Name LIKE :linkValue
                //SELECT Name, Nombre_cliente__c, Apellido__c FROM Personal__c WHERE Name LIKE:linkValue
                
-               SELECT Name, StageName FROM Opportunity WHERE AccountId =: searchText
+               SELECT Name, StageName, Description, Type FROM Opportunity WHERE AccountId =: searchText
             ]
             ;
             }
