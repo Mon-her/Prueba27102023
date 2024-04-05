@@ -1,44 +1,50 @@
 <template>
+
   <lightning-quick-action-panel header="Editar persona">
-
     <lightning-record-edit-form record-id={recordId} object-api-name={objectApiName}>
-
-      <lightning-input-field field-name="Name" type="text" label="Ingresa el nombre"
-        data-id="overview"></lightning-input-field>
-      <lightning-input-field field-name="Rating" type="text" label="Ingresa el nombre"
-        data-id="overview1"></lightning-input-field>
-      <lightning-input-field field-name="ParentId" type="text" label="Ingresa el nombre"
-        data-id="overview2"></lightning-input-field>
-      <lightning-input-field field-name="Phone" type="text" label="Ingresa el nombre"
-        data-id="overview3"></lightning-input-field>
-      <lightning-input-field field-name="AccountNumber" type="text" label="Ingresa el nombre"
-        data-id="overview4"></lightning-input-field>
-      <template for:each={prueba.data} for:item="prue">
-        <div key={prue.Id}>
-          <lightning-input type="text" label="Nombre oportunidad" value={prue.Name} name="Oportunidad"
-            data-id="N"></lightning-input>
-          <lightning-input type="text" label="Stage oportunidad" value={prue.StageName} name="Stage"
-            data-id="O"></lightning-input>
-          <lightning-input type="text" label="Descripción" value={prue.Description} name="Oportunidad"
-            data-id="S"></lightning-input>
-          <lightning-input type="text" label="Tipo oportunidad" value={prue.Type} name="Stage"
-            data-id="T"></lightning-input>
+      <div class="slds-grid slds-gutters">
+        <div class="slds-col">
+          <lightning-input-field field-name="Name" type="text" label="Ingresa el nombre"
+            data-id="overview"></lightning-input-field>
+          <lightning-input-field field-name="Rating" type="text" label="Ingresa el nombre"
+            data-id="overview1"></lightning-input-field>
+          <lightning-input-field field-name="ParentId" type="text" label="Ingresa el nombre"
+            data-id="overview2"></lightning-input-field>
+          <lightning-input-field field-name="Phone" type="text" label="Ingresa el nombre"
+            data-id="overview3"></lightning-input-field>
+          <lightning-input-field field-name="AccountNumber" type="text" label="Ingresa el nombre"
+            data-id="overview4"></lightning-input-field>
+          <lightning-combobox label="Seleccione una opción" options={opciones}
+            data-id="Op"></lightning-combobox>
         </div>
-      </template>
-      <template for:each={prueba2.data} for:item="prue2">
-        <div key={prue2.Id}>
-          <lightning-input type="text" label="Nombre Contacto" value={prue2.Name} name="Nombre contacto"
-            data-id="No"></lightning-input>
-            <lightning-input type="text" label="Apellido Contacto" value={prue2.LastName} name="Apellido contacto"
-            data-id="Ap"></lightning-input>
-          <lightning-input type="text" label="Email" value={prue2.Email} name="Email"
-            data-id="E"></lightning-input>
-          <lightning-input type="text" label="Cumpleaños" value={prue2.Birthdate} name="Cumpleaños"
-            data-id="B"></lightning-input>
-          <lightning-input type="text" label="Primer nombre" value={prue2.FirstName} name="Primer nombre"
-            data-id="P"></lightning-input>
+        <div class="slds-col">
+          <template for:each={prueba.data} for:item="prue">
+            <div key={prue.Id}>
+              <lightning-input type="text" label="Nombre oportunidad" value={prue.Name} name="Oportunidad"
+                data-id="N"></lightning-input>
+              <lightning-input type="text" label="Stage oportunidad" value={prue.StageName} name="Stage"
+                data-id="O"></lightning-input>
+              <lightning-input type="text" label="Descripción" value={prue.Description} name="Oportunidad"
+                data-id="S"></lightning-input>
+              <lightning-input type="text" label="Tipo oportunidad" value={prue.Type} name="Stage"
+                data-id="T"></lightning-input>
+            </div>
+          </template>
+          <template for:each={prueba2.data} for:item="prue2">
+            <div key={prue2.Id}>
+              <lightning-input type="text" label="Nombre Contacto" value={prue2.Name} name="Nombre contacto"
+                data-id="No"></lightning-input>
+              <lightning-input type="text" label="Apellido Contacto" value={prue2.LastName} name="Apellido contacto"
+                data-id="Ap"></lightning-input>
+              <lightning-input type="text" label="Email" value={prue2.Email} name="Email" data-id="E"></lightning-input>
+              <lightning-input type="text" label="Cumpleaños" value={prue2.Birthdate} name="Cumpleaños"
+                data-id="B"></lightning-input>
+              <lightning-input type="text" label="Primer nombre" value={prue2.FirstName} name="Primer nombre"
+                data-id="P"></lightning-input>
+            </div>
+          </template>
         </div>
-      </template>
+      </div>
       <lightning-button class="slds-var-m-top_small slds-align_absolute-center" variant="brand"
         onclick={handleGeneratePDF} name="update" label="Save">
       </lightning-button>
