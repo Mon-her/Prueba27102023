@@ -4,6 +4,7 @@ import JSPDF from '@salesforce/resourceUrl/jsPDFLibrary';
 //import autoTableResource from '@salesforce/resourceUrl/jspdf_autotable';
 import jsPDF_AutoTable from '@salesforce/resourceUrl/jsPDF_AutoTable';
 import getbiblio from "@salesforce/apex/pdfprueba.getbiblio";
+import getbiblio2 from "@salesforce/apex/pdfprueba.getbiblio2";
 import { ShowToastEvent } from "lightning/platformShowToastEvent";
 
 export default class Personales extends LightningElement {
@@ -20,20 +21,11 @@ export default class Personales extends LightningElement {
   prueba;
   error;
 
-  // Evento change
-  handleInputChange(event) {
-    console.log(event);
-    const { name, value } = event.target;
-    this[name] = value;
-  }
+  @wire(getbiblio2, { searchText: "$recordId" })
+  prueba2;
 
-  // Evento click
-  handleclick(event) {
-    console.log(event);
-    const element = this.template.querySelector('[data-id="overview"]').value;
-    this.searchText = element;
-    this.outputText = element;
-  }
+  //searchText;
+
 
   renderedCallback() {
 
@@ -61,6 +53,21 @@ export default class Personales extends LightningElement {
           console.error('Error loading jsPDF library', error);
         });
     }
+  }
+
+  // Evento change
+  handleInputChange(event) {
+    console.log(event);
+    const { name, value } = event.target;
+    this[name] = value;
+  }
+
+  // Evento click
+  handleclick(event) {
+    console.log(event);
+    const element = this.template.querySelector('[data-id="overview"]').value;
+    this.searchText = element;
+    this.outputText = element;
   }
 
   handleGeneratePDF() {
@@ -152,9 +159,25 @@ export default class Personales extends LightningElement {
 
     // Configurar datos de la tabla Edad
     const tableData_n = [
-      ['Stage oportunidad', 'Tipo oportunidad', 'Descripción'],
+      ['Stage oportunidad',
+        'Tipo oportunidad',
+        'Descripción',
+        'Apellido contacto',
+        'Email',
+        'Nombre Contacto',
+        'Cumpleaños',
+        'Primer nombre',
+      ],
       //['Nombre', formData.N],
-      [formData.O, formData.S, formData.T],
+      [formData.O,
+      formData.S,
+      formData.T,
+      formData.Ap,
+      formData.E,
+      formData.No,
+      formData.B,
+      formData.P
+      ],
       //['Dirección', direccion]
     ];
 
@@ -167,9 +190,9 @@ export default class Personales extends LightningElement {
       margin: margins
       //columnStyles: {
       //  0: { cellWidth: 20 }, // Ancho de la primera columna en puntos
-       // 1: { cellWidth: 'auto' }, // Ancho de la segunda columna ajustado automáticamente al contenido
-       // 2: { cellWidth: 'wrap' } // Ancho de la tercera columna con contenido que se envuelve
-      
+      // 1: { cellWidth: 'auto' }, // Ancho de la segunda columna ajustado automáticamente al contenido
+      // 2: { cellWidth: 'wrap' } // Ancho de la tercera columna con contenido que se envuelve
+
       //columnStyles: {
       // 0: { fillColor: [255, 0, 0] }, // Estilo para la primera columna
       //  1: { fontStyle: 'italic' } // Estilo para la segunda columna
@@ -196,9 +219,9 @@ export default class Personales extends LightningElement {
     // Mostrar mensaje de éxito
     ShowToastEvent('Éxito', 'Se ha generado el PDF con éxito', 'success');
 
-    // } else {
-    //  console.error('jsPDF library not initialized');
-    // }
+    //} else {
+    //console.error('jsPDF library not initialized');
+    //}
 
 
 

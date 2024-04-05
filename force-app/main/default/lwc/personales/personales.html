@@ -25,6 +25,20 @@
             data-id="T"></lightning-input>
         </div>
       </template>
+      <template for:each={prueba2.data} for:item="prue2">
+        <div key={prue2.Id}>
+          <lightning-input type="text" label="Nombre Contacto" value={prue2.Name} name="Nombre contacto"
+            data-id="No"></lightning-input>
+            <lightning-input type="text" label="Apellido Contacto" value={prue2.LastName} name="Apellido contacto"
+            data-id="Ap"></lightning-input>
+          <lightning-input type="text" label="Email" value={prue2.Email} name="Email"
+            data-id="E"></lightning-input>
+          <lightning-input type="text" label="Cumpleaños" value={prue2.Birthdate} name="Cumpleaños"
+            data-id="B"></lightning-input>
+          <lightning-input type="text" label="Primer nombre" value={prue2.FirstName} name="Primer nombre"
+            data-id="P"></lightning-input>
+        </div>
+      </template>
       <lightning-button class="slds-var-m-top_small slds-align_absolute-center" variant="brand"
         onclick={handleGeneratePDF} name="update" label="Save">
       </lightning-button>
