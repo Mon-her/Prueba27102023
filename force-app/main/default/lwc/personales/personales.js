@@ -5,8 +5,7 @@ import jsPDF_AutoTable from '@salesforce/resourceUrl/jsPDF_AutoTable';
 import getbiblio from "@salesforce/apex/pdfprueba.getbiblio";
 import getbiblio2 from "@salesforce/apex/pdfprueba.getbiblio2";
 //import { ShowToastEvent } from "lightning/platformShowToastEvent";
-import { generarFormato1 } from 'c/pruebapdf';
-import { generarFormato2 } from 'c/pruebapdf';
+import { generarFormato1, generarFormato2 } from 'c/pruebapdf';
 
 export default class Personales extends LightningElement {
   jsPDFInitialized = false;
@@ -65,9 +64,9 @@ export default class Personales extends LightningElement {
 
     // Crear un PDF personalizado con base en la opción del usuario
     if (Op === 'opcion1') {
-      generarFormato2(doc);
-    } else if (Op === 'opcion2') {
       generarFormato1(doc, formData);
+    } else if (Op === 'opcion2') {
+      generarFormato2(doc, formData);
     }
   }
 }
