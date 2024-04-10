@@ -1,7 +1,8 @@
 public with sharing class pdfprueba {
   @AuraEnabled(cacheable=true)
   //public static list<Personal__c> getbiblio(String searchText){
-  public static list<Opportunity> getbiblio(Id searchText) {
+  //public static list<Opportunity> getbiblio(Id searchText) {
+    public static list<Account> getbiblio(ID searchText) {
     //String linkValue = '%' + searchText + '%';
     //String linkValue = '%1212566%';
 
@@ -12,9 +13,13 @@ public with sharing class pdfprueba {
       // SELECT Name, Apellido__c, Celular__c FROM Personal__c WHERE Name LIKE :linkValue
       //SELECT Name, Nombre_cliente__c, Apellido__c FROM Personal__c WHERE Name LIKE:linkValue
 
-      SELECT Name, StageName, Description, Type
-      FROM Opportunity
-      WHERE AccountId = :searchText
+      //SELECT Name, StageName, Description, Type
+      //FROM Opportunity
+      //WHERE AccountId = :searchText
+
+      SELECT Name
+      FROM Account
+      WHERE Name = :searchText
     ];
   }
   @AuraEnabled(cacheable=true)

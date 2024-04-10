@@ -1,5 +1,5 @@
 import img from '@salesforce/resourceUrl/imagen2';
-import img2 from '@salesforce/resourceUrl/imagen';
+import image from '@salesforce/resourceUrl/imagen';
 
 async function toBase64(url) {
     return new Promise((resolve, reject) => {
@@ -20,7 +20,7 @@ async function toBase64(url) {
 
 export async function generarFormato1(doc, formData) {
     // Generar el PDF formato 
-
+   
     // Definir los márgenes para mover la tabla en la dirección X
     const margins = { top: 5, bottom: 5, left: 5 };
 
@@ -91,6 +91,13 @@ export async function generarFormato1(doc, formData) {
         ],
     ];
 
+    
+    if (formData.overview11 === true) {
+        formData.overview11 = 'Hola a todos';
+      } else if (formData.overview11 === false) {
+        formData.overview11 = 'Hola';
+      }
+
     // Configurar datos de la segunda tabla 
     const tableData_n = [
         ['Stage oportunidad',
@@ -109,7 +116,7 @@ export async function generarFormato1(doc, formData) {
         formData.E,
         formData.No,
         formData.B,
-        formData.P
+        formData.radio1
         ],
     ];
 
@@ -165,7 +172,7 @@ export async function generarFormato2(doc, formData) {
     const  y = 1; // Posición y de la imagen
   
     // Simulación de una operación asíncrona
-    const base64Image = await toBase64(img2);
+    const base64Image = await toBase64(image);
     // Agregar imagen al PDF
     doc.addImage(base64Image, 'PNG', x, y, 60, 10); // Parámetros: imagen, formato, x, y, ancho, alto
 
@@ -198,7 +205,7 @@ export async function generarFormato2(doc, formData) {
         formData.overview1,
         formData.overview2,
         formData.overview3,
-        formData.overview4
+        formData.overview99
         ],
     ];
 
