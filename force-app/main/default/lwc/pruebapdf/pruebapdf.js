@@ -116,7 +116,8 @@ export async function generarFormato1(doc, formData) {
         formData.E,
         formData.No,
         formData.B,
-        formData.radio1
+        //formData.radio1 ,
+        //'\u2610',
         ],
     ];
 
@@ -139,6 +140,12 @@ export async function generarFormato1(doc, formData) {
         columnWidth: [30, 'auto', 'wrap']
     });
 
+    doc.setDrawColor(80,80,80);
+    doc.rect(30,doc.autoTable.previous.finalY - 10,5,5);
+    doc.setFontSize(10);
+    doc.setTextColor(80,80,80);
+    doc.text(10,doc.autoTable.previous.finalY - 6,'Checkbox');
+    
     // Nombre del archivo PDF
     doc.save('formulario.pdf');
 

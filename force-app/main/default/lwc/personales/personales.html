@@ -4,7 +4,7 @@
     <section role="dialog" tabindex="-1" aria-labelledby="modal-heading-01" aria-modal="true"
       aria-describedby="modal-content-id-1" class="slds-modal slds-fade-in-open slds-modal_large">
       <div class="slds-modal__container">
-        <header class="slds-modal__header">
+        <lightning-modal-header>
           <h2 id="modal-heading-01" class="slds-text-heading_medium">Título del Modal</h2>
           <button class="slds-button slds-button_icon slds-modal__close slds-button_icon-inverse" title="Close">
 
@@ -12,7 +12,7 @@
               size="small"></lightning-icon>
             <span class="slds-assistive-text">Cerrar</span>
           </button>
-        </header>
+        </lightning-modal-header>
         <div class="slds-modal__content slds-p-around_medium" id="modal-content-id-1">
           <!-- Aquí va tu formulario -->
           <lightning-card title="formulario">
@@ -23,7 +23,7 @@
                     <lightning-input-field field-name="Name" type="text" label="Ingresa el nombre"
                       data-id="overview"></lightning-input-field>
                     <lightning-input-field field-name="AccountId" type="text" label="Ingresa el nombre"
-                      data-id="overview1" onchange={handleChange}></lightning-input-field>
+                      data-id="overview1"></lightning-input-field>
                     <lightning-button class="slds-var-m-top_small slds-align_absolute-center" variant="brand"
                       onclick={mostrarCampo} name="Mostrar" label="Mostrar">
                     </lightning-button>
@@ -35,16 +35,12 @@
                       data-id="overview3"></lightning-input-field>
                     <lightning-input-field field-name="AccountNumber" type="text" label="Ingresa el nombre"
                       data-id="overview4"></lightning-input-field>
-                      <lightning-radio-group name="radioGroup"
-                      label="Radio Group"
-                      options={options}
-                      value={valor}
-                      type="radio" 
-                      onchange={handleChangeRadio}
-                      data-id="radio1"></lightning-radio-group>
-                      <lightning-input type="text" label="Cuenta" value={radio} name="Cuenta"
+                    <lightning-radio-group name="radioGroup" label="Radio Group" options={options} type="radio"
+                      onchange={handleChangeRadio} data-id="radio1"></lightning-radio-group>
+                    <lightning-input type="text" label="Cuenta" value={radio} name="Cuenta"
                       data-id="overview99"></lightning-input>
-                    <lightning-input type="checkbox" checked={accountName} label={accountName} data-id="overview12"></lightning-input>
+                    <lightning-input type="checkbox" checked={accountName} label={accountName}
+                      data-id="overview12"></lightning-input>
                     <lightning-combobox label="Seleccione una opción" options={opciones}
                       data-id="Op"></lightning-combobox>
                   </div>
@@ -77,16 +73,18 @@
                     </template>
                   </div>
                 </div>
-                <lightning-button class="slds-var-m-top_small slds-align_absolute-center" variant="brand"
-                  onclick={handleGeneratePDF} name="Descargar" label="Descargar PDF">
-                </lightning-button>
-                <lightning-button class="slds-button_neutral" variant="brand" onclick={cerrarModal} name="Cancel"
-                  label="Cancel">
-                </lightning-button>
               </lightning-record-edit-form>
+
             </div>
           </lightning-card>
         </div>
+        <lightning-modal-footer>
+          <lightning-button variant="neutral" onclick={cerrarModal} name="Cancel" label="Cancel">
+          </lightning-button>
+          <lightning-button variant="brand" class="slds-m-left_x-small slds-m-around_small" onclick={handleGeneratePDF} name="Descargar"
+            label="Descargar PDF">
+          </lightning-button>
+        </lightning-modal-footer>
       </div>
     </section>
     <div class="slds-backdrop slds-backdrop_open"></div>
