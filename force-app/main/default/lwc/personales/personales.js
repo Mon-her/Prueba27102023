@@ -45,6 +45,20 @@ export default class Personales extends LightningElement {
   @wire(getbiblio2, { searchText: "$searchText" })
   prueba2;
 
+  @wire(getActivityOptions, { searchText: "$searchText" })
+  wiredActivityOptions({ error, data }) {
+    if (data) {
+      // Combina la actividad económica del trabajador con la lista completa de opciones
+      const combinedOptions = data.allOptions.map(item => ({ label: item.Actividad_economica__c, value: item.Id }));
+      if (data.workerActivity) {
+        this.selectedOption = data.workerActivity.Id;
+      }
+      this.activityOptions = combinedOptions;
+    } else if (error) {
+      console.error('Error retrieving activity options: ', error);
+    }
+  }
+
   //connectedCallback() {
   // Escucha el evento personalizado 'mostrarformulario'
   //     this.template.addEventListener('mostrarformulario', this.mostrar.bind(this));
