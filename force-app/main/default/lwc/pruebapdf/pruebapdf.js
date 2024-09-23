@@ -54,11 +54,11 @@ export async function generarFormato1(doc, formData) {
 
     // Configurar datos de la primera tabla (Cabecera)
     const tableCabe = [
-        ['Día',
-            'Mes',
-            'Año',
+        ['Día:',
+            'Mes:',
+            'Año:',
             'Vendedor:',
-            'Ciudad',
+            'Ciudad:',
             'Linea(s):',
             'Nombre de Concesionario/Oficina:',
         ],
@@ -248,7 +248,7 @@ export async function generarFormato1(doc, formData) {
 
     // Configurar datos de la sexta tabla (Información de Ingresos y Egresos)
     const tableInfoInEg = [
-        ['Ingresos Mensuales',
+        ['Ingresos Mensuales:',
             'Egresos Mensuales:',
         ],
         ['Salario $:',
@@ -291,7 +291,7 @@ export async function generarFormato1(doc, formData) {
 
     // Configurar datos de la septima tabla (Información de Ingresos y Egresos Continuación)
     const tableInfoInEg_2 = [
-        ['Detalle de otros Ingresos', '',
+        ['Detalle de otros Ingresos:', '',
             'Total Patrimonio $:',
         ],
         ['Ingresos no Operacionales:',
@@ -684,7 +684,6 @@ export async function generarFormato1(doc, formData) {
     // Crear tabla (3) con configuraciones al pdf (Información General del Solicitante)
     doc.autoTable({
         startY: doc.autoTable.previous.finalY + 4.5,
-        //head: tableInfoGeneSolici.slice(0, 1),
         body: tableInfoGeneSolici,
         tableWidth: 200,
         margin: margins,
@@ -1068,35 +1067,35 @@ export async function generarFormato1(doc, formData) {
 
     // Checkbox Relación con la Empresa (Dueño) 
     doc.setDrawColor(80, 80, 80);
-    doc.rect(16, doc.autoTable.previous.finalY - 20, 2, 2);
+    doc.rect(14, doc.autoTable.previous.finalY - 8.1, 2, 2);
     doc.setFontSize(6);
     doc.setFont("helvetica", "normal");
     doc.setTextColor(80, 80, 80);
-    doc.text(6.5, doc.autoTable.previous.finalY - 17, 'Dueño');
+    doc.text(6.5, doc.autoTable.previous.finalY - 6.4, 'Dueño');
 
     // Checkbox Relación con la Empresa (Empleado) 
     doc.setDrawColor(80, 80, 80);
-    doc.rect(35, doc.autoTable.previous.finalY - 20, 2, 2);
+    doc.rect(32.5, doc.autoTable.previous.finalY - 8.1, 2, 2);
     doc.setFontSize(6);
     doc.setFont("helvetica", "normal");
     doc.setTextColor(80, 80, 80);
-    doc.text(21.5, doc.autoTable.previous.finalY - 17, 'Empleado');
+    doc.text(21.5, doc.autoTable.previous.finalY - 6.4, 'Empleado');
 
     // Checkbox Relación con la Empresa (Contratista) 
     doc.setDrawColor(80, 80, 80);
-    doc.rect(55, doc.autoTable.previous.finalY - 20, 2, 2);
+    doc.rect(52.5, doc.autoTable.previous.finalY - 8.1, 2, 2);
     doc.setFontSize(6);
     doc.setFont("helvetica", "normal");
     doc.setTextColor(80, 80, 80);
-    doc.text(40.5, doc.autoTable.previous.finalY - 17, 'Contratista');
+    doc.text(40.5, doc.autoTable.previous.finalY - 6.4, 'Contratista');
 
     // Checkbox Relación con la Empresa (Socio) 
     doc.setDrawColor(80, 80, 80);
-    doc.rect(69, doc.autoTable.previous.finalY - 20, 2, 2);
+    doc.rect(67.5, doc.autoTable.previous.finalY - 8.1, 2, 2);
     doc.setFontSize(6);
     doc.setFont("helvetica", "normal");
     doc.setTextColor(80, 80, 80);
-    doc.text(61, doc.autoTable.previous.finalY - 17, 'Socio');
+    doc.text(61, doc.autoTable.previous.finalY - 6.4, 'Socio');
 
     // Checkbox lleno Tipo de contrato
     if (formData.rela_empre === 'dueño') {
@@ -1189,27 +1188,27 @@ export async function generarFormato1(doc, formData) {
 
     // Checkbox Clase de Vivienda 1 (Apto) 
     doc.setDrawColor(80, 80, 80);
-    doc.rect(28, doc.autoTable.previous.finalY - 6, 2, 2);
+    doc.rect(27.5, doc.autoTable.previous.finalY - 2.4, 2, 2);
     doc.setFontSize(6);
     doc.setFont("helvetica", "normal");
     doc.setTextColor(80, 80, 80);
-    doc.text(21.5, doc.autoTable.previous.finalY - 3, 'Apto');
+    doc.text(21.5, doc.autoTable.previous.finalY - 0.7, 'Apto');
 
     // Checkbox Clase de Vivienda 1 (Casa) 
     doc.setDrawColor(80, 80, 80);
-    doc.rect(42, doc.autoTable.previous.finalY - 6, 2, 2);
+    doc.rect(41, doc.autoTable.previous.finalY - 2.4, 2, 2);
     doc.setFontSize(6);
     doc.setFont("helvetica", "normal");
     doc.setTextColor(80, 80, 80);
-    doc.text(34, doc.autoTable.previous.finalY - 3, 'Casa');
+    doc.text(34, doc.autoTable.previous.finalY - 0.7, 'Casa');
 
     // Checkbox Clase de Vivienda 1 (Local)
     doc.setDrawColor(80, 80, 80);
-    doc.rect(56, doc.autoTable.previous.finalY - 6, 2, 2);
+    doc.rect(55, doc.autoTable.previous.finalY - 2.4, 2, 2);
     doc.setFontSize(6);
     doc.setFont("helvetica", "normal");
     doc.setTextColor(80, 80, 80);
-    doc.text(48, doc.autoTable.previous.finalY - 3, 'Local');
+    doc.text(48, doc.autoTable.previous.finalY - 0.7, 'Local');
 
     // Checkbox Clase de Vivienda 1
     if (formData.clase_inmueble_1 === 'apto') {
@@ -1225,19 +1224,19 @@ export async function generarFormato1(doc, formData) {
 
     // Checkbox Certificado de Tradicion 1 (Si) 
     doc.setDrawColor(80, 80, 80);
-    doc.rect(124, doc.autoTable.previous.finalY - 6, 2, 2);
+    doc.rect(123, doc.autoTable.previous.finalY - 2.4, 2, 2);
     doc.setFontSize(6);
     doc.setFont("helvetica", "normal");
     doc.setTextColor(80, 80, 80);
-    doc.text(120, doc.autoTable.previous.finalY - 3, 'Si');
+    doc.text(120, doc.autoTable.previous.finalY - 0.7, 'Si');
 
     // Checkbox Certificado de Tradicion 1 (No)
     doc.setDrawColor(80, 80, 80);
-    doc.rect(136, doc.autoTable.previous.finalY - 6, 2, 2);
+    doc.rect(134.5, doc.autoTable.previous.finalY - 2.4, 2, 2);
     doc.setFontSize(6);
     doc.setFont("helvetica", "normal");
     doc.setTextColor(80, 80, 80);
-    doc.text(130, doc.autoTable.previous.finalY - 3, 'No');
+    doc.text(130, doc.autoTable.previous.finalY - 0.7, 'No');
 
     // Checkbox Certificado de Tradicion 1
     if (formData.certi_inmueble_1 === 'si_1') {
@@ -1281,27 +1280,27 @@ export async function generarFormato1(doc, formData) {
 
     // Checkbox Clase de Vivienda 2 (Apto) 
     doc.setDrawColor(80, 80, 80);
-    doc.rect(28, doc.autoTable.previous.finalY - 6, 2, 2);
+    doc.rect(27.5, doc.autoTable.previous.finalY - 2.4, 2, 2);
     doc.setFontSize(6);
     doc.setFont("helvetica", "normal");
     doc.setTextColor(80, 80, 80);
-    doc.text(21.5, doc.autoTable.previous.finalY - 3, 'Apto');
+    doc.text(21.5, doc.autoTable.previous.finalY - 0.7, 'Apto');
 
     // Checkbox Clase de Vivienda 2 (Casa) 
     doc.setDrawColor(80, 80, 80);
-    doc.rect(42, doc.autoTable.previous.finalY - 6, 2, 2);
+    doc.rect(41, doc.autoTable.previous.finalY - 2.4, 2, 2);
     doc.setFontSize(6);
     doc.setFont("helvetica", "normal");
     doc.setTextColor(80, 80, 80);
-    doc.text(34, doc.autoTable.previous.finalY - 3, 'Casa');
+    doc.text(34, doc.autoTable.previous.finalY - 0.7, 'Casa');
 
     // Checkbox Clase de Vivienda 2 (Local)
     doc.setDrawColor(80, 80, 80);
-    doc.rect(56, doc.autoTable.previous.finalY - 6, 2, 2);
+    doc.rect(55, doc.autoTable.previous.finalY - 2.4, 2, 2);
     doc.setFontSize(6);
     doc.setFont("helvetica", "normal");
     doc.setTextColor(80, 80, 80);
-    doc.text(48, doc.autoTable.previous.finalY - 3, 'Local');
+    doc.text(48, doc.autoTable.previous.finalY - 0.7, 'Local');
 
     // Checkbox Clase de Vivienda 2
     if (formData.clase_inmueble_2 === 'apto') {
@@ -1317,19 +1316,19 @@ export async function generarFormato1(doc, formData) {
 
     // Checkbox Certificado de Tradicion 2 (Si)
     doc.setDrawColor(80, 80, 80);
-    doc.rect(124, doc.autoTable.previous.finalY - 6, 2, 2);
+    doc.rect(123, doc.autoTable.previous.finalY - 2.4, 2, 2);
     doc.setFontSize(6);
     doc.setFont("helvetica", "normal");
     doc.setTextColor(80, 80, 80);
-    doc.text(120, doc.autoTable.previous.finalY - 3, 'Si');
+    doc.text(120, doc.autoTable.previous.finalY - 0.7, 'Si');
 
     // Checkbox Certificado de Tradicion 2 (No)
     doc.setDrawColor(80, 80, 80);
-    doc.rect(136, doc.autoTable.previous.finalY - 6, 2, 2);
+    doc.rect(134.5, doc.autoTable.previous.finalY - 2.4, 2, 2);
     doc.setFontSize(6);
     doc.setFont("helvetica", "normal");
     doc.setTextColor(80, 80, 80);
-    doc.text(130, doc.autoTable.previous.finalY - 3, 'No');
+    doc.text(130, doc.autoTable.previous.finalY - 0.7, 'No');
 
     // Checkbox Certificado de Tradicion 2
     if (formData.certi_inmueble_2 === 'si_1') {
@@ -1373,27 +1372,27 @@ export async function generarFormato1(doc, formData) {
 
     // Checkbox Clase de Vivienda 3 (Apto) 
     doc.setDrawColor(80, 80, 80);
-    doc.rect(28, doc.autoTable.previous.finalY - 6, 2, 2);
+    doc.rect(27.5, doc.autoTable.previous.finalY - 2.4, 2, 2);
     doc.setFontSize(6);
     doc.setFont("helvetica", "normal");
     doc.setTextColor(80, 80, 80);
-    doc.text(21.5, doc.autoTable.previous.finalY - 3, 'Apto');
+    doc.text(21.5, doc.autoTable.previous.finalY - 0.7, 'Apto');
 
     // Checkbox Clase de Vivienda 3 (Casa) 
     doc.setDrawColor(80, 80, 80);
-    doc.rect(42, doc.autoTable.previous.finalY - 6, 2, 2);
+    doc.rect(41, doc.autoTable.previous.finalY - 2.4, 2, 2);
     doc.setFontSize(6);
     doc.setFont("helvetica", "normal");
     doc.setTextColor(80, 80, 80);
-    doc.text(34, doc.autoTable.previous.finalY - 3, 'Casa');
+    doc.text(34, doc.autoTable.previous.finalY - 0.7, 'Casa');
 
     // Checkbox Clase de Vivienda 3 (Local)
     doc.setDrawColor(80, 80, 80);
-    doc.rect(56, doc.autoTable.previous.finalY - 6, 2, 2);
+    doc.rect(55, doc.autoTable.previous.finalY - 2.4, 2, 2);
     doc.setFontSize(6);
     doc.setFont("helvetica", "normal");
     doc.setTextColor(80, 80, 80);
-    doc.text(48, doc.autoTable.previous.finalY - 3, 'Local');
+    doc.text(48, doc.autoTable.previous.finalY - 0.7, 'Local');
 
     // Checkbox Clase de Vivienda 3
     if (formData.clase_inmueble_3 === 'apto') {
@@ -1409,19 +1408,19 @@ export async function generarFormato1(doc, formData) {
 
     // Checkbox Certificado de Tradicion 3 (Si) 
     doc.setDrawColor(80, 80, 80);
-    doc.rect(124, doc.autoTable.previous.finalY - 6, 2, 2);
+    doc.rect(123, doc.autoTable.previous.finalY - 2.4, 2, 2);
     doc.setFontSize(6);
     doc.setFont("helvetica", "normal");
     doc.setTextColor(80, 80, 80);
-    doc.text(120, doc.autoTable.previous.finalY - 3, 'Si');
+    doc.text(120, doc.autoTable.previous.finalY - 0.7, 'Si');
 
     // Checkbox Certificado de Tradicion 3 (No)
     doc.setDrawColor(80, 80, 80);
-    doc.rect(136, doc.autoTable.previous.finalY - 6, 2, 2);
+    doc.rect(134.5, doc.autoTable.previous.finalY - 2.4, 2, 2);
     doc.setFontSize(6);
     doc.setFont("helvetica", "normal");
     doc.setTextColor(80, 80, 80);
-    doc.text(130, doc.autoTable.previous.finalY - 3, 'No');
+    doc.text(130, doc.autoTable.previous.finalY - 0.7, 'No');
 
     // Checkbox Certificado de Tradicion 3
     if (formData.certi_inmueble_3 === 'si_1') {
@@ -1453,27 +1452,27 @@ export async function generarFormato1(doc, formData) {
 
     // Checkbox Clase de Vehiculo 1 (Moto)
     doc.setDrawColor(80, 80, 80);
-    doc.rect(77, doc.autoTable.previous.finalY - 20.5, 2, 2);
+    doc.rect(76.5, doc.autoTable.previous.finalY - 8, 2, 2);
     doc.setFontSize(6);
     doc.setFont("helvetica", "normal");
     doc.setTextColor(80, 80, 80);
-    doc.text(70, doc.autoTable.previous.finalY - 17.5, 'Moto');
+    doc.text(70, doc.autoTable.previous.finalY - 6.3, 'Moto');
 
     // Checkbox Clase de Vehiculo 1 (Camioneta) 
     doc.setDrawColor(80, 80, 80);
-    doc.rect(97.5, doc.autoTable.previous.finalY - 20.5, 2, 2);
+    doc.rect(95, doc.autoTable.previous.finalY - 8, 2, 2);
     doc.setFontSize(6);
     doc.setFont("helvetica", "normal");
     doc.setTextColor(80, 80, 80);
-    doc.text(83, doc.autoTable.previous.finalY - 17.5, 'Camioneta');
+    doc.text(83, doc.autoTable.previous.finalY - 6.3, 'Camioneta');
 
     // Checkbox Clase de Vehiculo 1 (Otro)
     doc.setDrawColor(80, 80, 80);
-    doc.rect(110, doc.autoTable.previous.finalY - 20.5, 2, 2);
+    doc.rect(109.5, doc.autoTable.previous.finalY - 8, 2, 2);
     doc.setFontSize(6);
     doc.setFont("helvetica", "normal");
     doc.setTextColor(80, 80, 80);
-    doc.text(103.5, doc.autoTable.previous.finalY - 17.5, 'Otro');
+    doc.text(103.5, doc.autoTable.previous.finalY - 6.3, 'Otro');
 
     // Checkbox Clase de Vehiculo 1
     if (formData.clase_vehi_1 === 'moto') {
@@ -1489,27 +1488,27 @@ export async function generarFormato1(doc, formData) {
 
     // Checkbox Clase de Vehiculo 2 (Moto)
     doc.setDrawColor(80, 80, 80);
-    doc.rect(77, doc.autoTable.previous.finalY - 13.5, 2, 2);
+    doc.rect(76.5, doc.autoTable.previous.finalY - 5.2, 2, 2);
     doc.setFontSize(6);
     doc.setFont("helvetica", "normal");
     doc.setTextColor(80, 80, 80);
-    doc.text(70, doc.autoTable.previous.finalY - 10.5, 'Moto');
+    doc.text(70, doc.autoTable.previous.finalY - 3.5, 'Moto');
 
     // Checkbox Clase de Vehiculo 2 (Camioneta) 
     doc.setDrawColor(80, 80, 80);
-    doc.rect(97.5, doc.autoTable.previous.finalY - 13.5, 2, 2);
+    doc.rect(95, doc.autoTable.previous.finalY - 5.2, 2, 2);
     doc.setFontSize(6);
     doc.setFont("helvetica", "normal");
     doc.setTextColor(80, 80, 80);
-    doc.text(83, doc.autoTable.previous.finalY - 10.5, 'Camioneta');
+    doc.text(83, doc.autoTable.previous.finalY - 3.5, 'Camioneta');
 
     // Checkbox Clase de Vehiculo 2 (Otro)
     doc.setDrawColor(80, 80, 80);
-    doc.rect(110, doc.autoTable.previous.finalY - 13.5, 2, 2);
+    doc.rect(109.5, doc.autoTable.previous.finalY - 5.2, 2, 2);
     doc.setFontSize(6);
     doc.setFont("helvetica", "normal");
     doc.setTextColor(80, 80, 80);
-    doc.text(103.5, doc.autoTable.previous.finalY - 10.5, 'Otro');
+    doc.text(103.5, doc.autoTable.previous.finalY - 3.5, 'Otro');
 
     // Checkbox Clase de Vehiculo 2
     if (formData.clase_vehi_2 === 'moto') {
@@ -1525,27 +1524,27 @@ export async function generarFormato1(doc, formData) {
 
     // Checkbox Clase de Vehiculo 3 (Moto)
     doc.setDrawColor(80, 80, 80);
-    doc.rect(77, doc.autoTable.previous.finalY - 6, 2, 2);
+    doc.rect(76.5, doc.autoTable.previous.finalY - 2.4, 2, 2);
     doc.setFontSize(6);
     doc.setFont("helvetica", "normal");
     doc.setTextColor(80, 80, 80);
-    doc.text(70, doc.autoTable.previous.finalY - 3, 'Moto');
+    doc.text(70, doc.autoTable.previous.finalY - 0.7, 'Moto');
 
     // Checkbox Clase de Vehiculo 3 (Camioneta) 
     doc.setDrawColor(80, 80, 80);
-    doc.rect(97.5, doc.autoTable.previous.finalY - 6, 2, 2);
+    doc.rect(95, doc.autoTable.previous.finalY - 2.4, 2, 2);
     doc.setFontSize(6);
     doc.setFont("helvetica", "normal");
     doc.setTextColor(80, 80, 80);
-    doc.text(83, doc.autoTable.previous.finalY - 3, 'Camioneta');
+    doc.text(83, doc.autoTable.previous.finalY - 0.7, 'Camioneta');
 
     // Checkbox Clase de Vehiculo 3 (Otro)
     doc.setDrawColor(80, 80, 80);
-    doc.rect(110, doc.autoTable.previous.finalY - 6, 2, 2);
+    doc.rect(109.5, doc.autoTable.previous.finalY - 2.4, 2, 2);
     doc.setFontSize(6);
     doc.setFont("helvetica", "normal");
     doc.setTextColor(80, 80, 80);
-    doc.text(103.5, doc.autoTable.previous.finalY - 3, 'Otro');
+    doc.text(103.5, doc.autoTable.previous.finalY - 0.7, 'Otro');
 
     // Checkbox Clase de Vehiculo 3
     if (formData.clase_vehi_3 === 'moto') {

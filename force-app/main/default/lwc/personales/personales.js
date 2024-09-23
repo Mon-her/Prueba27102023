@@ -45,7 +45,7 @@ export default class Personales extends LightningElement {
   @wire(getbiblio2, { searchText: "$searchText" })
   prueba2;
 
-  @wire(getActivityOptions, { searchText: "$searchText" })
+  /*@wire(getActivityOptions, { searchText: "$searchText" })
   wiredActivityOptions({ error, data }) {
     if (data) {
       // Combina la actividad económica del trabajador con la lista completa de opciones
@@ -57,7 +57,7 @@ export default class Personales extends LightningElement {
     } else if (error) {
       console.error('Error retrieving activity options: ', error);
     }
-  }
+  }*/
 
   //connectedCallback() {
   // Escucha el evento personalizado 'mostrarformulario'
